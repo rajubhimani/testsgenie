@@ -1,0 +1,6 @@
+[09-May-2021 22:54:11 America/Boise] PHP Warning:  include(admin/config/sql.php): failed to open stream: No such file or directory in /home4/dlwhosti/public_html/demo/tesgenie-latest/essentials/top.php on line 2
+[09-May-2021 22:54:11 America/Boise] PHP Warning:  include(admin/config/sql.php): failed to open stream: No such file or directory in /home4/dlwhosti/public_html/demo/tesgenie-latest/essentials/top.php on line 2
+[09-May-2021 22:54:11 America/Boise] PHP Warning:  include(): Failed opening 'admin/config/sql.php' for inclusion (include_path='.:/opt/cpanel/ea-php54/root/usr/share/pear') in /home4/dlwhosti/public_html/demo/tesgenie-latest/essentials/top.php on line 2
+[09-May-2021 22:54:11 America/Boise] PHP Warning:  include(essentials/cookies.php): failed to open stream: No such file or directory in /home4/dlwhosti/public_html/demo/tesgenie-latest/essentials/top.php on line 16
+[09-May-2021 22:54:11 America/Boise] PHP Warning:  include(essentials/cookies.php): failed to open stream: No such file or directory in /home4/dlwhosti/public_html/demo/tesgenie-latest/essentials/top.php on line 16
+[09-May-2021 22:54:11 America/Boise] PHP Warning:  include(): Failed opening 'essentials/cookies.php' for inclusion (include_path='.:/opt/cpanel/ea-php54/root/usr/share/pear') in /home4/dlwhosti/public_html/demo/tesgenie-latest/essentials/top.php on line 16

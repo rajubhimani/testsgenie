@@ -1,0 +1,25 @@
+<?php
+include('../admin/config/sql.php');
+session_start();
+$_SESSION['seltpid']=$_REQUEST['tpid'];
+$_SESSION['trialTest']='';
+if($_REQUEST['trialTest']=='Yes')
+{
+    $_SESSION['trialTest']='Yes';
+    header('location:../test_instruction.php');
+}
+else
+{
+    if($_SESSION['uid']!='')
+    {
+        header('location:../test_instruction.php');
+    }
+    else
+    {
+        $_SESSION['crpage1']='test_instruction.php';
+        $_SESSION['msgStatus']='0';
+        $_SESSION['msgText'] = 'Please login to proceed';
+        header('location:../login.php?redirectPage=test_instruction.php');
+    }
+}
+?>
