@@ -1,0 +1,160 @@
+<html>
+<head>
+  <title>TestsGenie</title>
+  <link rel="shortcut icon" href="img/android-icon-72x72.png" />
+  <script src="https://unpkg.com/jquery"></script>
+  <link href="https://unpkg.com/survey-jquery@1.8.67/modern.css" type="text/css" rel="stylesheet" />
+  <script src="https://unpkg.com/survey-jquery@1.8.67/survey.jquery.min.js"></script>
+  <style>
+    body {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      font-size: 1em;
+      font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .nav_container {
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+      height: 115px;
+      padding-bottom: 1em;
+      border-bottom: 1px solid #00ADEE;
+    }
+
+    .logo_container {
+      width: 20%;
+      display: inline-block;
+      max-width: 200px;
+      text-align: center;
+      float: left
+    }
+
+    .header_text_container {
+      width: 80%;
+      display: inline-block;
+      text-align: center;
+      vertical-align: top;
+      padding-top: 12PX;
+    }
+
+      .header_text_container p {
+        padding: 4px;
+        font-size: 1.75em;
+        color: #fff;
+        font-style: italic;
+        border-radius: 13px;
+        background-image: linear-gradient( 270deg,#71c8ea,#02adee,#3b4796,#2c398f,#2b388f);
+        text-align: center;
+      }
+
+    form {
+      margin: 0px !important;
+    }
+
+    .sv-title {
+      font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .sv-selectbase__label {
+      font-size: 1em;
+    }
+
+    .sv-row:not(:last-child) {
+      padding-bottom: 1em;
+    }
+
+    .sv-completedpage {
+      height: 10em !important;
+      padding-top: 2.5em !important;
+      padding-bottom: 0.5em !important;
+      background-color:#fff !important;
+    }
+
+    .surveyResult {
+      background-color: #F5FCFE;
+      margin-right: 5%;
+      margin-left: calc(5% + 0.293em);
+      text-align: center;
+      padding-top: 0.5em;
+      padding-bottom: 2.5em;
+      display: none;
+    }
+
+    .sv-footer__complete-btn {
+      background: #2b388f !important;
+      float:none;
+    }
+
+    .registerButtonContainer {
+      padding: 20px;
+      text-align: center;
+    }
+    .registerNowButton {
+      background-color: #2b388f;
+      font-size: 2rem;
+    }
+
+    .question__description {
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="nav_container">
+    <div class="logo_container">
+      <img src="img/logo-02.png" />
+    </div>
+    <div class="header_text_container">
+      <p>Empowering every student with the right to knowledge.</p>
+    </div>
+  </div>
+  <div id="surveyContainer"></div>
+  <div id="surveyResult" class="surveyResult">
+    <h1 style="color:#202A6B;">Your Test Result is as follow:</h1>
+    <div class="sv-question__title">Total Questions: <span id="total_questions" class="sv-question__description" style="Color:#2b388f;">0</span></div>
+    <div class="sv-question__title">Total Questions Attempted: <span id="total_attempted" class="sv-question__description" style="color:#245200;">0</span></div>
+    <div class="sv-question__title">Total Correct Answer: <span id="total_correct" class="sv-question__description" style="color:#46781F;">0</span></div>
+    <div class="sv-question__title">Total Incorrect Answer: <span id="total_incorrect" class="sv-question__description" style="color:#ff1800;">0</span></div>
+    <div class="registerButtonContainer"><button class="sv-btn registerNowButton" id="btnRegisterNow">Register Now</button></div>
+  </div>
+  <script type="text/javascript">
+    $("#btnRegisterNow").click(function () {
+      window.location.href = "https://testsgenie.com";
+    });
+
+    function getAnswers() {
+      var questions = survey.getQuizQuestions();
+      var correct = 0; var incorrect = 0;
+      questions.forEach(function (question) {
+        if (!question.isEmpty()) {
+          if (question.isAnswerCorrect())
+            correct++;
+          else incorrect++;
+        }
+      });
+      $('#total_questions').text(questions.length);
+      $('#total_attempted').text(incorrect + correct);
+      $('#total_correct').text(correct);
+      $('#total_incorrect').text(incorrect);
+      $("#surveyResult").show();
+      $(".sv-completedpage h3").html('Thank you for completing the test!');
+    }
+
+    Survey.StylesManager.applyTheme("modern");
+
+    var surveyJSON = {"pages":[{"name":"page1","elements":[{"type":"panel","name":"panel1","elements":[{"type":"html","name":"question1","html":"\nThe progress seen in the late 20th century has stalled in the 21st. Even though around 40% of the world's population, more people than _____1______  before, live in countries that will hold free and fair elections this year, democracy's global advance has ______2______  to a halt, and may even have gone into reverse. Freedom House reckons that 2013 was the eighth consecutive year in ______3_____  global freedom declined, and that its forward march peaked around the beginning of the century. Between 1980 and 2000 the cause of democracy experienced only a few setbacks, but since 2000 there have _______4______  many. And democracy's problems run deeper than mere numbers suggest. Many nominal democracies have slid towards autocracy, maintaining the outward appearance of democracy through elections, but without the rights and institutions that are equally important _____5______ of a functioning democratic system. SOURCE: THE ECONOMIST"}],"readOnly":true,"title":"Given below is a paragraph consisting of blanks against each number. Identify the correct option among the five alternative pairs that perfectly fits into the given blank against the respective number to make the paragraph contextually meaningful and grammatically correct. "},{"type":"radiogroup","name":"question3","title":"Select the most appropriate option for blank No. 1","correctAnswer":"ever","choices":[{"value":"also","text":"also"},{"value":"ever","text":"ever"},{"value":"often","text":"often"},{"value":"seem","text":"seem"}]},{"type":"radiogroup","name":"question4","title":"Select the most appropriate option for blank No. 2","correctAnswer":"come","choices":[{"value":"come","text":"come"},{"value":"kept","text":"kept"},{"value":"like","text":"like"},{"value":"got","text":"got"}]},{"type":"radiogroup","name":"question5","title":"Select the most appropriate option for blank No. 3","correctAnswer":"which","choices":[{"value":"what","text":"what"},{"value":"where","text":"where"},{"value":"that","text":"that"},{"value":"which","text":"which"}]},{"type":"radiogroup","name":"question6","title":"Select the most appropriate option for blank No. 4","correctAnswer":"been","choices":[{"value":"been","text":"been"},{"value":"as","text":"as"},{"value":"and","text":"and"},{"value":"seem","text":"seem"}]},{"type":"radiogroup","name":"question7","title":"Select the most appropriate option for blank No. 5","correctAnswer":"aspects","choices":[{"value":"facts","text":"facts"},{"value":"inventions","text":"inventions"},{"value":"aspects","text":"aspects"},{"value":"demands","text":"demands"}]}],"title":"English Cloze Test"}]};
+    var survey = new Survey.Model(surveyJSON);
+    $("#surveyContainer").Survey({
+      model: survey,
+      onComplete: getAnswers
+    });
+
+  </script>
+
+</body>
+
+</html>
+

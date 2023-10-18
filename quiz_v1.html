@@ -1,0 +1,167 @@
+<html>
+<head>
+  <title>TestsGenie</title>
+  <link rel="shortcut icon" href="img/android-icon-72x72.png" />
+  <script src="https://unpkg.com/jquery"></script>
+  <link href="https://unpkg.com/survey-jquery@1.8.67/modern.css" type="text/css" rel="stylesheet" />
+  <script src="https://unpkg.com/survey-jquery@1.8.67/survey.jquery.min.js"></script>
+  <style>
+    body {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      font-size: 1em;
+      font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .nav_container {
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto;
+      height: 115px;
+      padding-bottom: 1em;
+      border-bottom: 1px solid #00ADEE;
+    }
+
+    .logo_container {
+      width: 20%;
+      display: inline-block;
+      max-width: 200px;
+      text-align: center;
+      float: left
+    }
+
+    .header_text_container {
+      width: 80%;
+      display: inline-block;
+      text-align: center;
+      vertical-align: top;
+      /*padding-top: 12PX;*/
+    }
+
+      .header_text_container p {
+        padding: 4px;
+        font-size: 1.75em;
+        color: #fff;
+        font-style: italic;
+        border-radius: 13px;
+        background-image: linear-gradient( 270deg,#71c8ea,#02adee,#3b4796,#2c398f,#2b388f);
+        text-align: center;
+      }
+
+    form {
+      margin: 0px !important;
+    }
+
+    .sv-title {
+      font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .sv-selectbase__label {
+      font-size: 1em;
+    }
+
+    .sv-row:not(:last-child) {
+      padding-bottom: 1em;
+    }
+
+    .sv-completedpage {
+      height: 10em !important;
+      padding-top: 2.5em !important;
+      padding-bottom: 0.5em !important;
+      background-color: #fff !important;
+    }
+
+    .surveyResult {
+      background-color: #F5FCFE;
+      margin-right: 5%;
+      margin-left: calc(5% + 0.293em);
+      text-align: center;
+      padding-top: 0.5em;
+      padding-bottom: 2.5em;
+      display: none;
+    }
+
+    .sv-footer__complete-btn {
+      background: #2b388f !important;
+      float: none;
+      font-size: 1.5rem;
+    }
+
+    .registerButtonContainer {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .registerNowButton {
+      background-color: #2b388f;
+      font-size: 2rem;
+    }
+
+    .question__description {
+      font-weight: 600;
+    }
+
+    .sv-footer {
+      padding-bottom: 2em;
+    }
+  </style>
+</head>
+<body>
+  <div class="nav_container">
+    <div class="logo_container">
+      <img src="img/logo-02.png" />
+    </div>
+    <div class="header_text_container">
+      <p>Empowering every student with the right to knowledge.</p>
+    </div>
+  </div>
+  <div id="surveyContainer"></div>
+  <div id="surveyResult" class="surveyResult">
+    <h1 style="color:#202A6B;">Your Test Result is as follow:</h1>
+    <div class="sv-question__title">Total Questions: <span id="total_questions" class="sv-question__description" style="Color:#2b388f;">0</span></div>
+    <div class="sv-question__title">Total Questions Attempted: <span id="total_attempted" class="sv-question__description" style="color:#245200;">0</span></div>
+    <div class="sv-question__title">Total Correct Answer: <span id="total_correct" class="sv-question__description" style="color:#46781F;">0</span></div>
+    <div class="sv-question__title">Total Incorrect Answer: <span id="total_incorrect" class="sv-question__description" style="color:#ff1800;">0</span></div>
+    <div class="registerButtonContainer"><button class="sv-btn registerNowButton" id="btnRegisterNow">Register Now</button></div>
+  </div>
+  <script type="text/javascript">
+    $("#btnRegisterNow").click(function () {
+      window.location.href = "https://testsgenie.com";
+    });
+
+    function getAnswers() {
+      var questions = survey.getQuizQuestions();
+      var correct = 0; var incorrect = 0;
+      questions.forEach(function (question) {
+        if (!question.isEmpty()) {
+          if (question.isAnswerCorrect())
+            correct++;
+          else incorrect++;
+        }
+      });
+      $('#total_questions').text(questions.length);
+      $('#total_attempted').text(incorrect + correct);
+      $('#total_correct').text(correct);
+      $('#total_incorrect').text(incorrect);
+      $("#surveyResult").show();
+      $(".sv-completedpage h3").html('Thank you for completing the test!');
+    }
+
+    Survey.StylesManager.applyTheme("modern");
+
+    var surveyJSON = { "pages": [{ "name": "page1", "elements": [{ "type": "radiogroup", "name": "qst_1", "title": "The ratio between a two-digit number and the sum of the digits of that number is 4 : 1. If the digit in the unit's is three more than the digit in the ten's places, what is the number?", "correctAnswer": "36", "choices": [{ "value": "25", "text": "25" }, { "value": "36", "text": "36" }, { "value": "47", "text": "47" }, { "value": "58", "text": "58" }] }, { "type": "radiogroup", "name": "qst_2", "title": "If three numbers are added in pairs, the sums equal 10, 19 and 21. Find the numbers?", "correctAnswer": "3", "choices": [{ "value": "2, 3 and 5", "text": "2, 3 and 5" }, { "value": "6, 8 and 10", "text": "6, 8 and 10" }, { "value": "6, 4 and 15", "text": "6, 4 and 15" }, { "value": "12, 9 and 15", "text": "12, 9 and 15" }] }, { "type": "radiogroup", "name": "qst_3", "title": "50 is divided into two parts such that the sum of their reciprocal is 1/12 find the two parts.", "correctAnswer": "2", "choices": [{ "value": "14, 36", "text": "14, 36" }, { "value": "20, 30", "text": "20, 30" }, { "value": "38, 12", "text": "38, 12" }, { "value": "35, 15", "text": "35, 15" }] }, { "type": "radiogroup", "name": "qst_4", "title": "Sum of two numbers is 50. If one of them is 2/5th of other one then the value of numbers?", "correctAnswer": "250/7, 100/7", "choices": [{ "value": "115/7, 235/7", "text": "115/7, 235/7" }, { "value": "150/7, 200/7", "text": "150/7, 200/7" }, { "value": "240/7, 110/7", "text": "240/7, 110/7" }, { "value": "250/7, 100/7", "text": "250/7, 100/7" }] }, { "type": "radiogroup", "name": "qst_6", "title": "The average of four consecutive even numbers is 27. find the largest of these numbers.", "correctAnswer": "30", "choices": [{ "value": "22", "text": "22" }, { "value": "24", "text": "24" }, { "value": "27", "text": "27" }, { "value": "30", "text": "30" }] }, { "type": "radiogroup", "name": "qst_5", "title": "A number exceeds its two fifth by 75. The number is:", "correctAnswer": "125", "choices": [{ "value": "112", "text": "112" }, { "value": "150", "text": "150" }, { "value": "125", "text": "125" }, { "value": "100", "text": "100" }] }, { "type": "radiogroup", "name": "qst_7", "title": "The least number by which 1470 must be divided to get a number which is a perfect square is", "correctAnswer": "30", "choices": [{ "value": "5", "text": "5" }, { "value": "6", "text": "6" }, { "value": "15", "text": "15" }, { "value": "30", "text": "30" }] }, { "type": "radiogroup", "name": "qst_8", "title": "Of three numbers, the sum of the first two is 45, the sum of the second and the third is 55, and the sum of the third and thrice the first is 90. Find the third number.", "correctAnswer": "30", "choices": [{ "value": "20", "text": "20" }, { "value": "25", "text": "25" }, { "value": "30", "text": "30" }, { "value": "15", "text": "15" }] }, { "type": "radiogroup", "name": "qst_9", "title": "A girl finds the average of 6 positive integers, each integers containing two digits. By mistake she interchanges the digit of one number say xy for yx. Due to this the average becomes 1.5 less than the previous one. What was the difference between two digits x and y.", "correctAnswer": "1", "choices": [{ "value": "1", "text": "1" }, { "value": "2", "text": "2" }, { "value": "3", "text": "3" }, { "value": "4", "text": "4" }] }, { "type": "radiogroup", "name": "qst_10", "title": "The sum of the squares of three numbers is 532 and the ratio of the first and the second as also of the second and the third is 3 : 2. Then the first number is", "correctAnswer": "18", "choices": [{ "value": "8", "text": "8" }, { "value": "12", "text": "12" }, { "value": "18", "text": "18" }, { "value": "20", "text": "20" }] }], "title": "Math Sample Test" }] }
+
+    var survey = new Survey.Model(surveyJSON);
+    $("#surveyContainer").Survey({
+      model: survey,
+      onComplete: getAnswers
+    });
+
+  </script>
+
+</body>
+
+</html>
+
